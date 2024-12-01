@@ -1,0 +1,191 @@
+:root {
+    /* variables defined in :root are accessible anywhere */
+    --background-cream: #FEF5E8ff;
+    --text-primary-color: #3B3B3B;
+    --text-accent-color: #2587B7ff;
+    --pink-accent-color: #F15F79ff;
+
+}
+
+html {
+    height: 100%;
+}
+
+.title{
+    color: var(--text-accent-color);
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    background-color: var(--background-cream);
+    font-family: 'Raleway';
+    font-size: 20px;
+    font-weight: 500;
+}
+
+h2{
+    color: var(--text-accent-color);
+}
+
+
+#welcome-card{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.welcome-card-text{
+    max-width: 50%;
+}
+
+.welcome-card-img{
+
+    max-height: 75vh;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-card-img img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.social-media{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    padding-top: 10%;
+}
+
+.social-media a img {
+    width: 60px; 
+    height: auto;
+    transition: transform 0.3s ease; 
+}
+
+.social-media a img:hover {
+    transform: scale(1.1);
+}
+
+
+a{
+    color: var(--text-accent-color);
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 250ms ease;
+}
+
+a:hover {
+    border-bottom: 2px solid var(--pink-accent-color);    
+}
+
+
+header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+    #desktop-menu {
+        display: none;
+    }
+
+    #mobile-menu nav {
+        /* trick for position absolute to cover the entire page */
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: var(--background-cream); /* hides the content behind the menu */
+        transform: translateX(-100%); /* hidden */
+        transition: transform .25s ease;
+    }
+
+    #mobile-menu nav.active {
+        transform: translateX(0%); /* visible */
+    }
+
+    #mobile-menu ul {
+        font-size: 10vw;
+        list-style: none;
+    }
+
+    #mobile-menu ul li {
+        margin-bottom: 2vw;
+    }
+
+    #toggle {
+        display: block;
+        background-image: url(../images/burger-menu-svgrepo-com.svg);
+        background-size: cover;
+        height: 30px;
+        width: 30px;
+        position: relative;
+        z-index: 9999;
+        cursor: pointer;
+    }
+
+    #toggle.active {
+        background-image: url(../images/close-svgrepo-com.svg);
+        height: 40px;
+        width: 40px;
+    }
+
+    #name-error {
+        color: red;
+    }
+}
+
+main {
+    padding: 0 10px;
+}
+
+form {
+    width: 100%;
+    max-width: 300px;
+}
+
+form p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.error {
+    color: red;
+}
+
+/* Desktop */
+@media screen and (min-width: 1000px) {
+    header #mobile-menu {
+        display: none;
+    }
+    header #desktop-menu, header #desktop-menu ul, header #desktop-menu ul li {
+        display: flex;
+    }
+    header #desktop-menu ul li {
+        padding-left: 10px;
+    }
+    .welcome-card-img{
+        display:flex;
+    }
+}
+
+@media screen and (max-width: 999px) {
+
+    .welcome-card-img{
+        display: none;
+    }
+}
+
+footer{
+    font-size: 15px;
+    color: #9c9c9c;
+}
